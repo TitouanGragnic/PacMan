@@ -3,9 +3,14 @@ import pygame
 from src.pacman import *
 from src.maze import *
 
+
+size = 20
+width = 25
+height = 15
+
 # pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1280, 720))
+screen = pygame.display.set_mode(((2 * width + 1) * size, (2 * height + 1) * size))
 clock = pygame.time.Clock()
 running = True
 dt = 0
@@ -13,9 +18,6 @@ dt = 0
 #PacMan Setup
 
 
-size = 20
-width = int(screen.get_width() / size)
-height = int(screen.get_height() / size)
 
 maze = Maze(screen, width, height, size)
 pacman = PacMan(screen, maze, size)
@@ -28,10 +30,10 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("dark blue")
+    screen.fill("black")
 
     maze.print()
-    pacman.action(dt)
+    #pacman.action(dt)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
