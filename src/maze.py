@@ -82,6 +82,26 @@ def transpose_maze(maze):
                     res[x - 1][y + 1] = 1
                     res[x - 1][y - 1] = 1
                     res[x - 1][y] = 1
+    for i in range(int(len(res)/6 * 2), int(len(res)/6 * 4)):
+        for j in range(int(len(res[0])/6 * 2), int(len(res[0])/6 * 4)):
+            res[i][j] = 0
+
+    #TODO
+    #peux etre ajouter une supression de case random pour ouvrir un peut  plus le labirinte?
+
+
+    for i in range(int(len(res)/3)+1, int(len(res)/3 * 2)-2):
+        res[i][int(len(res[0])/3) + 1] = 1
+        res[i][int(len(res[0])/3 * 2) - 2] = 1
+
+    for j in range(int(len(res[0])/6 * 2 + 1), int(len(res[0])/6 * 4 - 1)):
+            res[int(len(res)/3)+ 1][j] = 1
+            res[int(len(res)/3*2)-2][j] = 1
+
+    res[int(len(res)/2)][int(len(res[0])/3) + 1] = 0
+
+
+
     return res
 
 """

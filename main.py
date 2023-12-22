@@ -33,7 +33,7 @@ while running:
     screen.fill("black")
 
     maze.print()
-    #pacman.action(dt)
+    pacman.action(dt)
 
     # flip() the display to put your work on screen
     pygame.display.flip()

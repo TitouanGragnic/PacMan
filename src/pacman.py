@@ -38,7 +38,7 @@ class PacMan:
             self.pos.x += self.speed * self.dt
 
     def print(self):
-        pygame.draw.circle(self.screen, "yellow", self.pos, self.size * 0.9)
+        pygame.draw.circle(self.screen, "yellow", self.pos, self.size * 0.45)
 
     def action(self, dt):
         self.dt = dt
