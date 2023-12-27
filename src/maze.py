@@ -82,13 +82,15 @@ def transpose_maze(maze):
                     res[x - 1][y + 1] = 1
                     res[x - 1][y - 1] = 1
                     res[x - 1][y] = 1
+
+    tmp = [[ not k for k in line] for line in res]
+
     for i in range(int(len(res)/6 * 2), int(len(res)/6 * 4)):
         for j in range(int(len(res[0])/6 * 2), int(len(res[0])/6 * 4)):
             res[i][j] = 0
-
+            tmp[i][j] = 1 if j in [int(len(res[0])/6 * 2), int(len(res[0])/6 * 4) - 1] or i in [int(len(res)/6 * 2), int(len(res)/6 * 4) -1] else 0
     #TODO
     #peux etre ajouter une supression de case random pour ouvrir un peut  plus le labirinte?
-
 
     for i in range(int(len(res)/3)+1, int(len(res)/3 * 2)-2):
         res[i][int(len(res[0])/3) + 1] = 1
@@ -102,7 +104,8 @@ def transpose_maze(maze):
 
 
 
-    return res
+    return res, tmp
+
 
 """
     pygame.draw.rect(self.screen, "black",
@@ -126,7 +129,7 @@ class Maze:
         self.width = width
         self.height = height
         self.size = size
-        self.maze = transpose_maze(generate_maze(width, height))
+        self.maze, self.point = transpose_maze(generate_maze(width, height))
         self.screen = screen
 
     def print(self):
@@ -136,40 +139,5 @@ class Maze:
                     pygame.draw.rect(self.screen, "dark blue",
                                      pygame.Rect( i * self.size, j * self.size,
                                                   self.size, self.size))
-        return
-        for i in range(self.height):
-            for j in range(self.width):
-                cell = self.maze[i][j]
-                x = (j * 2 + 1) * self.size
-                y = (i * 2 + 1) * self.size
-                if cell["nord"]:
-                    pygame.draw.rect(self.screen, "dark blue",
-                                     pygame.Rect(x - self.size , y - self.size,
-                                                 3 * self.size, self.size))
-                if cell["sud"]:
-                    pygame.draw.rect(self.screen, "dark blue",
-                                     pygame.Rect(x - self.size, y + self.size,
-                                                 3 * self.size, self.size))
-                if cell["est"]:
-                    pygame.draw.rect(self.screen, "dark blue",
-                                     pygame.Rect(x + self.size, y - self.size,
-                                                 self.size, 3 * self.size))
-                if cell["ouest"]:
-                    pygame.draw.rect(self.screen, "dark blue",
-                                 pygame.Rect(x - self.size, y - self.size,
-                                             self.size, 3 * self.size))
-
-
-        pygame.draw.rect(self.screen, "black",
-                         pygame.Rect(0, self.size, self.size, self.size))
-
-        pygame.draw.rect(self.screen, "black",
-                         pygame.Rect(2 * self.width * self.size,
-                                     (2 * self.height - 1) * self.size,
-                                     self.size, self.size))
-
-        pygame.draw.rect(self.screen, "black",
-                         pygame.Rect(((2 * self.width) // 3 - 3) * self.size,
-                                     ((2 * self.height) // 3 - 2) * self.size,
-                                     self.size * self.width,
-                                     self.size * self.height))
+                elif self.point[i][j]:
+                    pygame.draw.circle(self.screen, 'white', ((i + 0.5) * self.size, (j + 0.5) * self.size), self.size / 4)

@@ -3,7 +3,6 @@ import pygame
 from src.pacman import *
 from src.maze import *
 
-
 size = 20
 width = 25
 height = 15
@@ -16,8 +15,6 @@ running = True
 dt = 0
 
 #PacMan Setup
-
-
 
 maze = Maze(screen, width, height, size)
 pacman = PacMan(screen, maze, size)
