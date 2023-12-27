@@ -106,24 +106,6 @@ def transpose_maze(maze):
 
     return res, tmp
 
-
-"""
-    pygame.draw.rect(self.screen, "black",
-                         pygame.Rect(0, self.size, self.size, self.size))
-
-    pygame.draw.rect(self.screen, "black",
-                         pygame.Rect(2 * self.width * self.size,
-                                     (2 * self.height - 1) * self.size,
-                                     self.size, self.size))
-
-    pygame.draw.rect(self.screen, "black",
-                         pygame.Rect(((2 * self.width) // 3 - 3) * self.size,
-                                     ((2 * self.height) // 3 - 2) * self.size,
-                                     self.size * self.width,
-                                     self.size * self.height))
-
-"""
-
 class Maze:
     def __init__(self, screen, width, height, size):
         self.width = width

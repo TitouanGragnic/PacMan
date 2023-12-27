@@ -40,6 +40,13 @@ class PacMan:
     def print(self):
         pygame.draw.circle(self.screen, "yellow", self.pos, self.size * 0.45)
 
+    def eat(self):
+        i = int(self.pos.x / self.size)
+        j = int(self.pos.y / self.size)
+
+        if self.maze.point[i][j]:
+            self.maze.point[i][j] = 0
+
     def action(self, dt):
         self.dt = dt
         self.print()
@@ -53,3 +60,4 @@ class PacMan:
             self.move_left()
         if keys[pygame.K_d]  or keys[pygame.K_RIGHT]:
             self.move_right()
+        self.eat()
