@@ -3,6 +3,9 @@ import random
 import heapq
 import math
 
+WHITE = (255, 255, 255)
+DB = (0, 0, 138)
+
 def generate_maze(width, height):
     # Créer une grille pleine avec tous les murs
     maze = [[{"nord": True, "sud": True, "est": True, "ouest": True} for j in range(width)] for i in range(height)]
@@ -118,8 +121,8 @@ class Maze:
         for i in range(len(self.maze)):
             for j in range(len(self.maze[0])):
                 if self.maze[i][j]:
-                    pygame.draw.rect(self.screen, "dark blue",
+                    pygame.draw.rect(self.screen, DB,
                                      pygame.Rect( i * self.size, j * self.size,
                                                   self.size, self.size))
                 elif self.point[i][j]:
-                    pygame.draw.circle(self.screen, 'white', ((i + 0.5) * self.size, (j + 0.5) * self.size), self.size / 4)
+                    pygame.draw.circle(self.screen, WHITE, (int((i + 0.5) * self.size), int((j + 0.5) * self.size)), int(self.size / 4))

@@ -1,5 +1,7 @@
 import pygame
 
+YELLOW = (255, 255, 0)
+
 class PacMan:
     def __init__(self, screen, maze, size):
         self.screen = screen
@@ -38,7 +40,7 @@ class PacMan:
             self.pos.x += self.speed * self.dt
 
     def print(self):
-        pygame.draw.circle(self.screen, "yellow", self.pos, self.size * 0.45)
+        pygame.draw.circle(self.screen, YELLOW, (int(self.pos.x), int(self.pos.y)), int(self.size * 0.45))
 
     def eat(self):
         i = int(self.pos.x / self.size)
