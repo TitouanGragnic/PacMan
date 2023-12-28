@@ -10,6 +10,8 @@ class PacMan:
         self.dt = 0
         self.size = size
         self.maze = maze
+        #fruit pour manger fantôme
+        self.power_up = False
 
     def move_up(self):
         i = int(self.pos.x / self.size)
@@ -46,6 +48,9 @@ class PacMan:
         i = int(self.pos.x / self.size)
         j = int(self.pos.y / self.size)
 
+        if self.maze.point[i][j] == 2:
+            self.power_up = True
+            self.maze.point[i][j] = 0
         if self.maze.point[i][j]:
             self.maze.point[i][j] = 0
 
