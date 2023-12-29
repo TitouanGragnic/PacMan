@@ -2,6 +2,7 @@
 import pygame
 from src.pacman import *
 from src.maze import *
+from src.ghost import *
 
 size = 20
 width = 25
@@ -20,6 +21,7 @@ dt = 0
 
 maze = Maze(screen, width, height, size)
 pacman = PacMan(screen, maze, size)
+ghost = Ghost(screen, maze, size)
 
 while running:
     # poll for events
@@ -33,6 +35,7 @@ while running:
 
     maze.print()
     pacman.action(dt)
+    ghost.action(dt)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
