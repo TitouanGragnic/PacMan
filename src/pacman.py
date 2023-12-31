@@ -1,5 +1,7 @@
 import pygame
 
+YELLOW = (255, 255, 0)
+
 class PacMan:
     def __init__(self, screen, maze, size):
         self.screen = screen
@@ -9,6 +11,8 @@ class PacMan:
         self.size = size
         self.maze = maze
         self.score = 0
+        #fruit pour manger fantôme
+        self.power_up = False
 
     def move_up(self):
         i = int(self.pos.x / self.size)
@@ -39,12 +43,15 @@ class PacMan:
             self.pos.x += self.speed * self.dt
 
     def print(self):
-        pygame.draw.circle(self.screen, "yellow", self.pos, self.size * 0.45)
+        pygame.draw.circle(self.screen, YELLOW, (int(self.pos.x), int(self.pos.y)), int(self.size * 0.45))
 
     def eat(self):
         i = int(self.pos.x / self.size)
         j = int(self.pos.y / self.size)
 
+        if self.maze.point[i][j] == 2:
+            self.power_up = True
+            self.maze.point[i][j] = 0
         if self.maze.point[i][j]:
             self.maze.point[i][j] = 0
             self.score += 15
