@@ -8,6 +8,7 @@ class PacMan:
         self.dt = 0
         self.size = size
         self.maze = maze
+        self.score = 0
 
     def move_up(self):
         i = int(self.pos.x / self.size)
@@ -46,6 +47,7 @@ class PacMan:
 
         if self.maze.point[i][j]:
             self.maze.point[i][j] = 0
+            self.score += 15
 
     def action(self, dt):
         self.dt = dt
