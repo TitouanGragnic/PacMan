@@ -7,6 +7,7 @@ class PacMan:
         self.screen = screen
         self.pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
         self.speed = 300
+        self.life = 10
         self.dt = 0
         self.size = size
         self.maze = maze

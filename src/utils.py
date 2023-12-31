@@ -11,20 +11,24 @@ def kill_ghost(gh):
     gh.pos = [gh.screen.get_width() / 2, gh.screen.get_height() / 2]
     gh.real_pos = (int(gh.pos[0] / gh.size), int(gh.pos[1] / gh.size))
     gh.path = []
+    return True
 def kill_player(pc):
+    pc.life -= 1
     pc.pos = pygame.Vector2(pc.screen.get_width() / 2, pc.screen.get_height() / 2)
+    if (pc.life == 0):
+        return False
+    return True
 
 def check_event(player, ghost):
     if (player.power_up == True):
-        kill_ghost(ghost)
-        print("kill g")
+        return kill_ghost(ghost)
     else :
-        kill_player(player)
-        print("kill p")
+        return kill_player(player)
 
 def check_hitbox(player, ghosts):
     player_pos = (int(player.pos.x / player.size), int(player.pos.y /player.size))
     for elt in ghosts:
         if (elt.real_pos == player_pos):
-            check_event(player, elt)
+            return check_event(player, elt)
+    return True
             
