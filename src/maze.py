@@ -116,6 +116,13 @@ class Maze:
         self.size = size
         self.maze, self.point = transpose_maze(generate_maze(width, height))
         self.screen = screen
+        
+    def check_end(self):
+        for nb in self.point:
+            for i in nb:
+                if (i == True):
+                    return True
+        return False
 
     def print(self):
         for i in range(len(self.maze)):

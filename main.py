@@ -39,7 +39,10 @@ while running:
     draw_score(screen, height, size, pacman.score)
     for gh in ghosts:
         gh.action(dt)
-    running = check_hitbox(pacman, ghosts)
+    if (running):
+        running = check_hitbox(pacman, ghosts)
+    if (running):
+        running = maze.check_end()
 
     # flip() the display to put your work on screen
     pygame.display.flip()
