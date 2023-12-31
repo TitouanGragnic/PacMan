@@ -14,7 +14,7 @@ class Ghost:
         self.maze = maze
         self.path = []
         self.pos = [screen.get_width() / 2, screen.get_height() / 2]
-        self.real_pos = self.real_pos = (int(self.pos[0] / self.size), int(self.pos[1] / self.size))
+        self.real_pos = (int(self.pos[0] / self.size), int(self.pos[1] / self.size))
 
     def move_up(self):
         i = int(self.pos[0] / self.size)

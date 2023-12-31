@@ -39,6 +39,7 @@ while running:
     draw_score(screen, height, size, pacman.score)
     for gh in ghosts:
         gh.action(dt)
+    check_hitbox(pacman, ghosts)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
