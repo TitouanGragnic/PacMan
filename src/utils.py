@@ -33,15 +33,17 @@ def kill_ghost(gh):
     return True
 def kill_player(pc):
     pc.life -= 1
-    pc.pos = pygame.Vector2(pc.screen.get_width() / 2, pc.screen.get_height() / 2)
+    pc.pos = pc.start_pos()
     if (pc.life == 0):
         return False
     return True
 
 def check_event(player, ghost):
     if (player.power_up == True):
+        player.score += 100
         return kill_ghost(ghost)
     else :
+        player.score -= 150
         return kill_player(player)
 
 def check_hitbox(player, ghosts):

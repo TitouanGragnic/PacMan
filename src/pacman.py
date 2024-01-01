@@ -68,6 +68,7 @@ class PacMan:
         if self.maze.point[i][j] == 2:
             self.power_up = True
             self.maze.point[i][j] = 0
+            self.score += 50
         if self.maze.point[i][j]:
             self.maze.point[i][j] = 0
             self.score += 15

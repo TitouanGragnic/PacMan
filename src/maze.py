@@ -4,6 +4,7 @@ import heapq
 import math
 
 WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
 DB = (0, 0, 138)
 
 def generate_maze(width, height):
@@ -103,9 +104,22 @@ def transpose_maze(maze):
             res[int(len(res)/3)+ 1][j] = 1
             res[int(len(res)/3*2)-2][j] = 1
 
+    i = int(len(res)/6)
+    j = int(len(res[0])/6)
+    
     res[int(len(res)/2)][int(len(res[0])/3) + 1] = 0
 
+    res[i][j] = 0
+    tmp[i][j] = 2
 
+    res[i][j*5] = 0
+    tmp[i][j*5] = 2
+
+    res[i*5][j] = 0
+    tmp[i*5][j] = 2
+
+    res[i*5][j*5] = 0
+    tmp[i*5][j*5] = 2
 
     return res, tmp
 
@@ -131,5 +145,7 @@ class Maze:
                     pygame.draw.rect(self.screen, DB,
                                      pygame.Rect( i * self.size, j * self.size,
                                                   self.size, self.size))
-                elif self.point[i][j]:
+                if self.point[i][j] == 1:
                     pygame.draw.circle(self.screen, WHITE, (int((i + 0.5) * self.size), int((j + 0.5) * self.size)), int(self.size / 4))
+                if self.point[i][j] == 2:
+                    pygame.draw.circle(self.screen, GREEN, (int((i + 0.5) * self.size), int((j + 0.5) * self.size)), int(self.size / 4))
