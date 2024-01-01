@@ -5,15 +5,30 @@ YELLOW = (255, 255, 0)
 class PacMan:
     def __init__(self, screen, maze, size):
         self.screen = screen
-        self.pos = pygame.Vector2(screen.get_width() / 2 - size * 2, screen.get_height() / 2)
+        self.size = size
+        self.maze = maze
         self.speed = 300
         self.life = 3
         self.dt = 0
-        self.size = size
-        self.maze = maze
+        self.pos = self.start_pos()
         self.score = 0
         #fruit pour manger fantôme
         self.power_up = False
+        
+    def start_pos(self):
+        self.pos = pygame.Vector2(self.screen.get_width() / 2, self.screen.get_height() / 2)
+        i = int(self.pos.x / self.size)
+        j = int((self.pos.y - self.speed * self.dt - self.size / 2) / self.size)
+        while (not self.maze.maze[i][j]):
+            i = int(self.pos.x / self.size)
+            j = int((self.pos.y + self.speed * self.dt + self.size / 2) / self.size)
+            self.pos.y += self.size
+        while (self.maze.maze[i][j]):
+            i = int(self.pos.x / self.size)
+            j = int((self.pos.y + self.speed * self.dt + self.size / 2) / self.size)
+            self.pos.y += self.size
+        self.pos.y -= self.size
+        return self.pos
 
     def move_up(self):
         i = int(self.pos.x / self.size)

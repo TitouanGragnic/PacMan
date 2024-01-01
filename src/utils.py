@@ -17,7 +17,7 @@ def draw_score(screen, height, size, score):
 
 def draw_life(screen, height, width, size, life):
     for x in range(2 * width, 2 * width - life, -1):
-        pygame.draw.circle(screen, 'green',
+        pygame.draw.circle(screen, GREEN,
                            (int(x * size), int((2 * height + 1.5) * size)),
                            int(size * 0.45))
 
