@@ -5,9 +5,9 @@ YELLOW = (255, 255, 0)
 class PacMan:
     def __init__(self, screen, maze, size):
         self.screen = screen
-        self.pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+        self.pos = pygame.Vector2(screen.get_width() / 2 - size * 2, screen.get_height() / 2)
         self.speed = 300
-        self.life = 10
+        self.life = 3
         self.dt = 0
         self.size = size
         self.maze = maze
@@ -59,7 +59,6 @@ class PacMan:
 
     def action(self, dt):
         self.dt = dt
-        self.print()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w] or keys[pygame.K_UP]:
@@ -71,3 +70,4 @@ class PacMan:
         if keys[pygame.K_d]  or keys[pygame.K_RIGHT]:
             self.move_right()
         self.eat()
+        self.print()

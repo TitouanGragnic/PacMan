@@ -5,7 +5,7 @@ from src.maze import *
 from src.utils import *
 from src.ghost import *
 
-size = 40
+size = 30
 width = 25
 height = 15
 
@@ -22,21 +22,20 @@ dt = 0
 
 maze = Maze(screen, width, height, size)
 pacman = PacMan(screen, maze, size)
-ghosts = [Ghost(screen, maze, size) for _ in range(4)] 
+ghosts = [Ghost(screen, maze, size) for _ in range(4)]
 
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            pygame.quit()
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill(BLACK)
-
     maze.print()
     pacman.action(dt)
-    draw_score(screen, height, size, pacman.score)
+    draw_data(screen, height, width, size, pacman)
     for gh in ghosts:
         gh.action(dt)
     if (running):
@@ -52,4 +51,9 @@ while running:
     # independent physics.
     dt = clock.tick(60) / 1000
 
-pygame.quit()
+draw_game_over(screen, height, size, pacman.life)
+pygame.display.flip()
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
