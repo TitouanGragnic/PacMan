@@ -22,7 +22,7 @@ dt = 0
 
 maze = Maze(screen, width, height, size)
 pacman = PacMan(screen, maze, size)
-ghosts = [Ghost(screen, maze, size) for _ in range(4)]
+ghosts = [] # TODO
 
 while running:
     # poll for events

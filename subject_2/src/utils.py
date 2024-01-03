@@ -27,17 +27,21 @@ def draw_data(screen, height, width, size, pacman):
     draw_life(screen, height, width, size, pacman.life)
 
 def kill_ghost(gh):
-    #TODO
-    return True
+    # TODO
+    pass
 
 def kill_player(pc):
-    #TODO
-    return True
+    # TODO
+    pass
 
 def check_event(player, ghost):
-    #TODO
-    return True
+    if (player.power_up == True):
+        player.score += 100
+        return kill_ghost(ghost)
+    else :
+        player.score -= 150
+        return kill_player(player)
 
 def check_hitbox(player, ghosts):
-    #TODO
+    # TODO
     return True

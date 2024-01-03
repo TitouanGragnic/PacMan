@@ -54,7 +54,7 @@ class Ghost:
         parents = {}
         costs = {start: 0}
         heapq.heappush(heap, (0, start))
-    
+
         # Boucle principale
         while heap:
             # Sélection du nœud ayant le score F le plus faible
@@ -78,7 +78,7 @@ class Ghost:
                 nx, ny = x + dx, y + dy
                 if nx < 0 or ny < 0 or nx >= len(maze) or ny >= len(maze[0]):
                     continue
-                
+
                 if maze[nx][ny] == 0:
                     g = costs[node] + 1
                     h = math.sqrt((nx - end[0]) ** 2 + (ny - end[1]) ** 2)
@@ -101,7 +101,6 @@ class Ghost:
             for dx, dy in [(0, -1), (0, 1), (-1, 0), (1, 0), (0, 0)] :
                 x += dx
                 y += dy
-                #print(x,y, self.maze.maze[x][y])
                 if (self.maze.maze[x][y] == 0):
                     return(x, y)
         return (x, y)
@@ -115,10 +114,9 @@ class Ghost:
 
         if (self.real_pos == self.path[-1]):
             self.path.pop()
-        
+
         tmp = self.path[-1]
-        
-        #print(self.real_pos, path)
+
         if (tmp[0] > self.real_pos[0]):
             self.move_right()
         elif (tmp[0] < self.real_pos[0]):

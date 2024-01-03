@@ -17,7 +17,7 @@ class PacMan:
         self.power_up = False
         self.timer = 0
 
-    def start_pos(self):#TODO?
+    def start_pos(self):
         self.pos = pygame.Vector2(self.screen.get_width() / 2, self.screen.get_height() / 2)
         i = int(self.pos.x / self.size)
         j = int((self.pos.y - self.speed * self.dt - self.size / 2) / self.size)
@@ -32,55 +32,33 @@ class PacMan:
         self.pos.y -= self.size
         return self.pos
 
-    def move_up(self):#TODO?
-        i = int(self.pos.x / self.size)
-        j = int((self.pos.y - self.speed * self.dt - self.size / 2) / self.size)
+    def move_up(self):
+        # TODO
+        pass
 
-        if not self.maze.maze[i][j]:
-            self.pos.y -= self.speed * self.dt
+    def move_down(self):
+        # TODO
+        pass
 
-    def move_down(self):#TODO?
-        i = int(self.pos.x / self.size)
-        j = int((self.pos.y + self.speed * self.dt + self.size / 2) / self.size)
+    def move_left(self):
+        # TODO
+        pass
 
-        if not self.maze.maze[i][j]:
-            self.pos.y += self.speed * self.dt
-
-    def move_left(self):#TODO?
-        i = int((self.pos.x - self.speed * self.dt - self.size / 2) / self.size)
-        j = int(self.pos.y / self.size)
-
-        if not self.maze.maze[i][j]:
-            self.pos.x -= self.speed * self.dt
-
-    def move_right(self):#TODO?
-        i = int((self.pos.x + self.speed * self.dt + self.size / 2) / self.size)
-        j = int(self.pos.y / self.size)
-
-        if not self.maze.maze[i][j]:
-            self.pos.x += self.speed * self.dt
+    def move_right(self):
+        # TODO
+        pass
 
     def print(self):
         pygame.draw.circle(self.screen, YELLOW, (int(self.pos.x), int(self.pos.y)), int(self.size * 0.45))
 
     def eat(self):
-        i = int(self.pos.x / self.size)
-        j = int(self.pos.y / self.size)
+        # TODO
+        pass
 
-        if self.maze.point[i][j] == 2:
-            self.power_up = True
-            self.maze.point[i][j] = 0
-            self.score += 50
-        if self.maze.point[i][j]:
-            self.maze.point[i][j] = 0
-            self.score += 15
+
     def power(self):
-        if (self.power_up and self.timer == 0):
-            self.timer = time.time()
-            return;
-        if (self.timer - time.time() <= -10 and self.timer - time.time() >= -11):
-            self.power_up = False
-            self.timer = 0
+        # TODO
+        pass
 
     def action(self, dt):
         self.dt = dt
