@@ -34,7 +34,7 @@ Cette fonction permet de mager les petit points blanc afin de ganger des points,
 s'il sagit d'un point special il faut mettre le Pacman en mode Power *True*
 
 ### PacMan.Power()
-Cet Fonction nanai a devpt
+Cet Fonction doit permettre a PacMan de garder son powerup durant environ dix secondes. Pour ce faire vous pouvez utiliser la librairie time de python et de la fonction timer de cette librairie.
 
 ## Partie 2: src/maze.py src/utils.py
 
