@@ -16,7 +16,7 @@ class PacMan:
         #fruit pour manger fantôme
         self.power_up = False
         self.timer = 0
-        
+
     def start_pos(self):
         self.pos = pygame.Vector2(self.screen.get_width() / 2, self.screen.get_height() / 2)
         i = int(self.pos.x / self.size)
@@ -74,6 +74,7 @@ class PacMan:
         if self.maze.point[i][j]:
             self.maze.point[i][j] = 0
             self.score += 15
+
     def power(self):
         if (self.power_up and self.timer == 0):
             self.timer = time.time()

@@ -31,6 +31,7 @@ def kill_ghost(gh):
     gh.real_pos = (int(gh.pos[0] / gh.size), int(gh.pos[1] / gh.size))
     gh.path = []
     return True
+
 def kill_player(pc):
     pc.life -= 1
     pc.pos = pc.start_pos()
