@@ -55,6 +55,9 @@ class PacMan:
         # TODO
         pass
 
+    def kill(self):
+        # TODO
+        pass
 
     def power(self):
         # TODO

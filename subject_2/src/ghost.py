@@ -32,6 +32,10 @@ class Ghost:
         # TODO
         pass
 
+    def kill(self):
+        # TODO
+        pass
+
     def print(self):
         pygame.draw.circle(self.screen, RED, (int(self.pos[0]), int(self.pos[1])), int(self.size * 0.45))
 
